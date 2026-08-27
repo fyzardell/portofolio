@@ -77,13 +77,13 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a href="https://linkedin.com/in/fyzardell" target="_blank" rel="noopener noreferrer" className="contact-item">
+              <a href="https://www.linkedin.com/in/faeyza-ardellein-053a0b431/" target="_blank" rel="noopener noreferrer" className="contact-item">
                 <div className="contact-icon">
                   <i className="fa-brands fa-linkedin-in" />
                 </div>
                 <div className="contact-item-text">
                   <span className="contact-item-label">LinkedIn</span>
-                  <span className="contact-item-value">linkedin.com/in/fyzardell</span>
+                  <span className="contact-item-value">linkedin.com/in/faeyza-ardellein-053a0b431</span>
                 </div>
               </a>
             </div>

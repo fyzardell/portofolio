@@ -34,7 +34,7 @@ export default function Footer() {
           <a href="https://www.instagram.com/fyzardell/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <i className="fa-brands fa-instagram" />
           </a>
-          <a href="https://linkedin.com/in/fyzardell" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/faeyza-ardellein-053a0b431/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i className="fa-brands fa-linkedin-in" />
           </a>
           <a href="mailto:faeyzaardellein@gmail.com" aria-label="Email">
