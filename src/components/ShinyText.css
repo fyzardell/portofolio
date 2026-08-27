@@ -1,0 +1,22 @@
+.shiny-text {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    var(--color) 0%,
+    var(--color) 35%,
+    var(--shine-color) 50%,
+    var(--color) 65%,
+    var(--color) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-sweep var(--shine-speed) linear infinite;
+}
+
+@keyframes shiny-sweep {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}

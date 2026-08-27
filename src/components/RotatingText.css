@@ -1,0 +1,28 @@
+.rotating-text {
+  display: inline-block;
+  position: relative;
+  height: 1.2em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.rotating-word {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.rotating-word.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rotating-word.exit {
+  opacity: 0;
+  transform: translateY(-100%);
+}

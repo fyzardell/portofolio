@@ -1,0 +1,140 @@
+.photo-card {
+  width: 300px;
+  height: 380px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-out, box-shadow 0.4s ease;
+  will-change: transform;
+  z-index: 2;
+  box-shadow:
+    0 8px 40px rgba(236, 72, 153, 0.18),
+    0 2px 20px rgba(168, 85, 247, 0.12);
+}
+
+.photo-card--hovered {
+  box-shadow:
+    0 16px 60px rgba(236, 72, 153, 0.28),
+    0 4px 30px rgba(168, 85, 247, 0.2),
+    0 0 40px rgba(236, 72, 153, 0.15);
+}
+
+/* Glare effect */
+.photo-card-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  border-radius: 24px;
+  transition: opacity 0.3s;
+}
+
+/* Holographic shimmer */
+.photo-card-holo {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0) 0%,
+    rgba(236, 72, 153, 0.06) 20%,
+    rgba(168, 85, 247, 0.08) 40%,
+    rgba(99, 102, 241, 0.06) 60%,
+    rgba(236, 72, 153, 0.04) 80%,
+    rgba(236, 72, 153, 0) 100%
+  );
+  background-size: 200% 200%;
+  animation: holo-shift 4s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.photo-card--hovered .photo-card-holo {
+  opacity: 1;
+}
+
+@keyframes holo-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Rainbow border glow */
+.photo-card-border-glow {
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: 27px;
+  background: linear-gradient(
+    135deg,
+    #ec4899,
+    #a855f7,
+    #6366f1,
+    #ec4899,
+    #f472b6
+  );
+  background-size: 300% 300%;
+  animation: border-glow-move 4s ease infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  filter: blur(4px);
+}
+
+.photo-card--hovered .photo-card-border-glow {
+  opacity: 1;
+}
+
+@keyframes border-glow-move {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Image */
+.photo-card-img-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.photo-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.photo-card--hovered .photo-card-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 968px) {
+  .photo-card {
+    width: 260px;
+    height: 330px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-card {
+    width: 220px;
+    height: 280px;
+    border-radius: 20px;
+  }
+  .photo-card-img-wrap {
+    border-radius: 20px;
+  }
+  .photo-card-glare {
+    border-radius: 20px;
+  }
+  .photo-card-holo {
+    border-radius: 20px;
+  }
+  .photo-card-border-glow {
+    border-radius: 23px;
+  }
+}
