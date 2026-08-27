@@ -69,6 +69,7 @@ body {
 
 body.no-scroll {
   overflow: hidden;
+  height: 100%;
 }
 
 #root {
@@ -78,7 +79,7 @@ body.no-scroll {
 h1, h2, h3, h4, h5, h6,
 .section-title,
 .section-label {
-  font-family: "DM Serif Display", Georgia, serif;
+  font-family: "Lora", Georgia, serif;
 }
 
 a, button, input, textarea {

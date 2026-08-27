@@ -273,8 +273,10 @@
   .contact-info { text-align: center; }
   .contact-info .section-label { justify-content: center; }
   .contact-info .section-label::before { display: none; }
-  .contact-info .section-subtitle { margin: 0 auto; }
-  .contact-details { align-items: center; }
+  .contact-details {
+    align-items: stretch;
+    width: 100%;
+  }
   .contact-form-wrapper { padding: 28px 20px; }
   .toast { left: 16px; right: 16px; bottom: 16px; }
 }
