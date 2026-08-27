@@ -7,13 +7,15 @@
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  overflow-x: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 180px;
+  max-width: calc(100vw - 40px);
 }
 
 .vg-widget.on {
-  min-width: 260px;
-  max-width: 320px;
+  min-width: 220px;
+  max-width: calc(100vw - 40px);
 }
 
 .vg-widget-bar {
@@ -102,6 +104,8 @@
   color: #475569;
   line-height: 1.6;
   margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .vg-fab {
@@ -130,7 +134,11 @@
 }
 
 @media (max-width: 480px) {
-  .vg-widget { bottom: 12px; right: 12px; min-width: 160px; }
-  .vg-widget.on { min-width: 240px; max-width: calc(100vw - 24px); }
+  .vg-widget { bottom: 12px; right: 12px; min-width: 140px; max-width: calc(100vw - 24px); }
+  .vg-widget.on { min-width: 180px; max-width: calc(100vw - 24px); }
+  .vg-widget-bar { padding: 8px 12px; }
+  .vg-widget-label { font-size: 12px; }
+  .vg-widget-body { padding: 0 10px 10px; }
+  .vg-widget-text { font-size: 12px; }
   .vg-fab { bottom: 12px; right: 12px; width: 44px; height: 44px; }
 }
