@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import './Contact.css'
 
+const RECIPIENT = 'faeyzaardellein@gmail.com'
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [toast, setToast] = useState(false)
+  const [status, setStatus] = useState('idle') // 'idle' | 'success'
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -11,9 +13,22 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setToast(true)
+
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`)
+    const body = encodeURIComponent(
+      `Hi Faeyza,\n\nYou have a new message from your portfolio website.\n\n` +
+      `Name    : ${form.name}\n` +
+      `Email   : ${form.email}\n\n` +
+      `Message :\n${form.message}\n\n` +
+      `---\nSent via portfolio contact form`
+    )
+
+    // Open visitor's email client with form data pre-filled
+    window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`
+
+    setStatus('success')
     setForm({ name: '', email: '', message: '' })
-    setTimeout(() => setToast(false), 3500)
+    setTimeout(() => setStatus('idle'), 4500)
   }
 
   return (
@@ -121,12 +136,12 @@ export default function Contact() {
         </div>
       </div>
 
-      {toast && (
-        <div className="toast">
-          <i className="fa-solid fa-check-circle" />
+      {status === 'success' && (
+        <div className="toast toast-success">
+          <i className="fa-solid fa-circle-check" />
           <div>
-            <strong>Message sent successfully</strong>
-            <span>Thank you for reaching out. I will get back to you soon.</span>
+            <strong>Opening your email app</strong>
+            <span>Your message is ready — just hit Send in your email client!</span>
           </div>
         </div>
       )}

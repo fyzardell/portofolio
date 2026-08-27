@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -53,6 +53,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled && !menuOpen ? 'scrolled' : ''}`}>
       <nav className="navbar-inner container">
         <a href="#home" className="nav-logo">
+          <div className="nav-logo-mark">F</div>
           <span className="logo-text">Faeyza</span>
         </a>
 
