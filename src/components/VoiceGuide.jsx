@@ -20,33 +20,69 @@ const content = {
   ],
 }
 
+function pickVoice(lang) {
+  const voices = window.speechSynthesis?.getVoices() || []
+  const tag = lang === 'id' ? 'id' : 'en'
+  const preferred = lang === 'id'
+    ? ['Google Bahasa Indonesia', 'ID-id', 'id-ID', 'Indonesian']
+    : ['Google US English', 'Google UK English Female', 'en-US', 'en-GB', 'English']
+  for (const p of preferred) {
+    const v = voices.find((v) => v.name.includes(p) || v.lang.startsWith(tag))
+    if (v) return v
+  }
+  return voices.find((v) => v.lang.startsWith(tag)) || null
+}
+
 export default function VoiceGuide() {
   const [lang, setLang] = useState(() => localStorage.getItem('vg-lang') || 'id')
   const [on, setOn] = useState(() => localStorage.getItem('vg-on') === 'true')
   const [active, setActive] = useState(null)
   const [speaking, setSpeaking] = useState(false)
   const [minimized, setMinimized] = useState(false)
+  const [autoScroll, setAutoScroll] = useState(true)
+  const [voicesReady, setVoicesReady] = useState(false)
   const synthRef = useRef(window.speechSynthesis)
   const lastSpoken = useRef(null)
+  const sectionOrder = useRef([])
 
   useEffect(() => { localStorage.setItem('vg-lang', lang) }, [lang])
   useEffect(() => { localStorage.setItem('vg-on', on) }, [on])
 
-  const speak = useCallback((text) => {
+  useEffect(() => {
+    const load = () => setVoicesReady(true)
+    window.speechSynthesis?.addEventListener('voiceschanged', load)
+    setVoicesReady(true)
+    return () => window.speechSynthesis?.removeEventListener('voiceschanged', load)
+  }, [])
+
+  useEffect(() => {
+    sectionOrder.current = content[lang].map((c) => c.id)
+  }, [lang])
+
+  const speak = useCallback((text, onEnd) => {
     synthRef.current?.cancel()
     const u = new SpeechSynthesisUtterance(text)
+    const v = pickVoice(lang)
+    if (v) u.voice = v
     u.lang = lang === 'id' ? 'id-ID' : 'en-US'
     u.rate = 1.05
-    u.pitch = 1.05
+    u.pitch = 1.1
     u.onstart = () => setSpeaking(true)
-    u.onend = () => setSpeaking(false)
-    u.onerror = () => setSpeaking(false)
+    u.onend = () => { setSpeaking(false); onEnd?.() }
+    u.onerror = () => { setSpeaking(false); onEnd?.() }
     synthRef.current?.speak(u)
   }, [lang])
 
   const stop = useCallback(() => {
     synthRef.current?.cancel()
     setSpeaking(false)
+  }, [])
+
+  const scrollToSection = useCallback((id) => {
+    const el = document.getElementById(id)
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.scrollY - 80
+    window.scrollTo({ top: y, behavior: 'smooth' })
   }, [])
 
   useEffect(() => {
@@ -56,7 +92,7 @@ export default function VoiceGuide() {
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting && e.intersectionRatio >= 0.4) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.3) {
           const id = e.target.id
           const list = content[lang]
           const item = list.find((x) => x.id === id)
@@ -64,15 +100,16 @@ export default function VoiceGuide() {
             lastSpoken.current = id
             setActive(item)
             setMinimized(false)
+            if (autoScroll) scrollToSection(id)
             speak(item.text)
           }
         }
       })
-    }, { threshold: 0.4 })
+    }, { threshold: 0.3 })
 
     sections.forEach((s) => obs.observe(s))
     return () => { obs.disconnect(); stop() }
-  }, [on, lang, speak, stop])
+  }, [on, lang, speak, stop, autoScroll, scrollToSection])
 
   const current = active || content[lang][0]
 
@@ -87,33 +124,30 @@ export default function VoiceGuide() {
             <line x1="12" x2="12" y1="19" y2="22" />
           </svg>
           <span className="vg-widget-label">{on ? (current?.label || 'Guide') : 'Guide'}</span>
-          {on && speaking && <span className="vg-speak-dot" />}
+          {on && speaking && <span className="vg-speak-bars"><span /><span /><span /></span>}
         </div>
 
         {!minimized && on && (
           <div className="vg-widget-body">
             <div className="vg-widget-row">
-              <button className="vg-sm-btn" onClick={() => { setLang(lang === 'id' ? 'en' : 'id'); lastSpoken.current = null }}>
+              <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); setLang(lang === 'id' ? 'en' : 'id'); lastSpoken.current = null }}>
                 {lang === 'id' ? 'EN' : 'ID'}
               </button>
-              <button className="vg-sm-btn" onClick={() => {
-                if (speaking) stop()
-                else if (active) speak(active.text)
-              }}>
+              <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); if (speaking) stop(); else if (active) speak(active.text) }}>
                 {speaking ? '⏸' : '▶'}
               </button>
-              <button className="vg-sm-btn" onClick={() => { setOn(false); stop() }}>
+              <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); setAutoScroll(!autoScroll) }} title="Auto scroll">
+                {autoScroll ? '↕' : '➡'}
+              </button>
+              <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); setOn(false); stop() }}>
                 ✕
               </button>
             </div>
-            {active && (
-              <p className="vg-widget-text">{active.text}</p>
-            )}
+            {active && <p className="vg-widget-text">{active.text}</p>}
           </div>
         )}
       </div>
 
-      {/* Turn on button (when off) */}
       {!on && (
         <button className="vg-fab" onClick={() => { setOn(true); lastSpoken.current = null }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
