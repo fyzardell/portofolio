@@ -76,7 +76,7 @@ export default function Hero() {
             <a href="https://www.instagram.com/fyzardell/" target="_blank" rel="noopener noreferrer" className="hero-social-item">
               <i className="fa-brands fa-instagram" />
             </a>
-            <a href="https://www.linkedin.com/in/faeyza-ardellein-053a0b431/" target="_blank" rel="noopener noreferrer" className="hero-social-item">
+            <a href="https://www.linkedin.com/in/faeyza-ardellein-yaradhitya-053a0b431/" target="_blank" rel="noopener noreferrer" className="hero-social-item">
               <i className="fa-brands fa-linkedin-in" />
             </a>
             <a href="mailto:faeyzaardellein@gmail.com" className="hero-social-item">
