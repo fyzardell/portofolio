@@ -2,6 +2,7 @@
   background: var(--bg);
   border-top: 1px solid var(--border);
   padding: 80px 0;
+  overflow: hidden;
 }
 
 .about-grid {
@@ -91,6 +92,9 @@
   display: flex;
   gap: 12px;
   color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .code-line.ind { padding-left: 28px; }
@@ -102,7 +106,10 @@
 
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .about-card { max-width: 100%; }
-  .code-line { font-size: 11px; }
-  .code-line.ind { padding-left: 16px; }
+  .about-card { max-width: 100%; overflow: hidden; }
+  .card-body { padding: 16px; overflow: hidden; }
+  .code-line { font-size: 10px; gap: 8px; line-height: 1.8; }
+  .code-line.ind { padding-left: 12px; }
+  .card-filename { font-size: 11px; }
+  .card-header { padding: 10px 14px; }
 }
