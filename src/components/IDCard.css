@@ -1,5 +1,6 @@
 .id-card {
-  width: 340px;
+  width: 100%;
+  max-width: 340px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -171,9 +172,4 @@
   letter-spacing: 1px;
 }
 
-@media (max-width: 480px) {
-  .id-card {
-    width: 100%;
-    max-width: 340px;
-  }
-}
+

@@ -149,7 +149,7 @@
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
   }
 }

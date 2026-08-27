@@ -1,6 +1,6 @@
 .profile-card {
-  width: 320px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 320px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   position: relative;
