@@ -7,7 +7,7 @@ const content = {
     { id: 'about', label: 'Tentang', text: 'Pija itu mahasiswa Informatika di Universitas Sultan Ageng Tirtayasa yang suka banget ngulik teknologi, dari web development sampe data analysis. Dia juga suka menyelesaikan masalah lewat coding.' },
     { id: 'skills', label: 'Skill', text: 'Ini skill yang udah dikuasain Pija. Ada HTML, CSS, JavaScript, Python, Data Analysis, dan Git. Plus soft skill kayak problem solving dan team collaboration.' },
     { id: 'projects', label: 'Project', text: 'Beberapa project Pija: game 3D Multiplayer Snake Ladder, Data Analysis tentang perbandingan perceraian di Indonesia, dan Hifzhly, aplikasi AI buat menghafal Al-Quran.' },
-    { id: 'ambassador', label: 'Ambassador', text: 'Pija juga Google Student Ambassador. Dia aktif ngadain event teknologi dan sharing ilmu sama mahasiswa lain di kampusnya.' },
+    { id: 'ambassador', label: 'Ambassador', text: 'Pija adalah calon Google Student Ambassador. Dia aktif ngadain event teknologi dan sharing ilmu sama mahasiswa lain di kampusnya.' },
     { id: 'contact', label: 'Kontak', text: 'Mau ngobrol atau kerja sama? Hubungin Pija lewat form di sini atau lewat email dan media sosialnya. Ditunggu ya!' },
   ],
   en: [
@@ -15,7 +15,7 @@ const content = {
     { id: 'about', label: 'About', text: 'Pija is an Informatics student at Sultan Ageng Tirtayasa University who loves exploring technology, from web development to data analysis. She also enjoys solving problems through coding.' },
     { id: 'skills', label: 'Skills', text: 'These are Pija\'s skills. She knows HTML, CSS, JavaScript, Python, Data Analysis, and Git. Plus soft skills like problem solving and team collaboration.' },
     { id: 'projects', label: 'Projects', text: 'Some of Pija\'s projects: a 3D Multiplayer Snake Ladder game, Data Analysis on divorce rates in Indonesia, and Hifzhly, an AI app for Quran memorization.' },
-    { id: 'ambassador', label: 'Ambassador', text: 'Pija is also a Google Student Ambassador. She organizes tech events and shares knowledge with fellow students on campus.' },
+    { id: 'ambassador', label: 'Ambassador', text: 'Pija is a candidate Google Student Ambassador. She organizes tech events and shares knowledge with fellow students on campus.' },
     { id: 'contact', label: 'Contact', text: 'Want to chat or collaborate? Reach Pija through the form here, or via email and social media. She\'s waiting to hear from you!' },
   ],
 }

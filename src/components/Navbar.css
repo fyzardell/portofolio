@@ -119,6 +119,18 @@
   animation: nav-bounce 0.4s ease;
 }
 
+.nav-links a.active {
+  color: var(--pink-600);
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  background: var(--pink-600);
+  height: 2.5px;
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.4);
+}
+
 @keyframes nav-bounce {
   0%, 100% { transform: translateY(0); }
   40% { transform: translateY(-3px); }
