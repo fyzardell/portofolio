@@ -121,8 +121,8 @@
 
 @media (max-width: 480px) {
   .photo-card {
-    width: 220px;
-    height: 280px;
+    width: 200px;
+    height: 260px;
     border-radius: 20px;
   }
   .photo-card-img-wrap {

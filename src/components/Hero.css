@@ -200,4 +200,6 @@
   .stat-num { font-size: 18px; }
   .hero-scroll { display: none; }
   .hero-name { font-size: 30px; }
+  .hero-text { max-width: 100%; }
+  .hero-desc { font-size: 13px; max-width: 100%; }
 }

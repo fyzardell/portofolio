@@ -102,4 +102,7 @@
 
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-card { max-width: 100%; }
+  .code-line { font-size: 11px; }
+  .code-line.ind { padding-left: 16px; }
 }

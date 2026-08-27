@@ -275,13 +275,22 @@
   .contact-info .section-label::before { display: none; }
   .contact-info .section-subtitle { margin: 0 auto; }
   .contact-details { align-items: center; }
-  .contact-form-wrapper { padding: 28px 24px; }
+  .contact-form-wrapper { padding: 28px 20px; }
   .toast { left: 16px; right: 16px; bottom: 16px; }
 }
 
 @media (max-width: 480px) {
   .contact-form-wrapper {
-    padding: 24px 20px;
+    padding: 20px 16px;
     border-radius: var(--radius-lg);
+  }
+  .form-group input,
+  .form-group textarea {
+    padding: 14px 14px;
+    font-size: 13px;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 14px 24px;
   }
 }
