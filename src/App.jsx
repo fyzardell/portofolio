@@ -12,6 +12,7 @@ import Projects from './components/Projects'
 import Ambassador from './components/Ambassador'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import VoiceGuide from './components/VoiceGuide'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -72,6 +73,7 @@ function App() {
             <Contact />
           </main>
           <Footer />
+          <VoiceGuide />
         </>
       )}
     </>
