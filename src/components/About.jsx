@@ -73,7 +73,7 @@ export default function About() {
                 </div>
                 <div className="code-line ind">
                   <span className="ln">4</span>
-                  university: <span className="st">"University Name"</span>,
+                  university: <span className="st">"Sultan Ageng Tirtayasa"</span>,
                 </div>
                 <div className="code-line ind">
                   <span className="ln">5</span>

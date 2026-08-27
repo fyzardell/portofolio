@@ -56,16 +56,19 @@
 }
 
 .hero-name {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(34px, 5vw, 56px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   margin-bottom: 8px;
 }
 
 .hero-subtitle {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 400;
+  font-style: italic;
   color: var(--text-secondary);
   margin-bottom: 14px;
   height: 1.3em;

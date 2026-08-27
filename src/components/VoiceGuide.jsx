@@ -4,7 +4,7 @@ import './VoiceGuide.css'
 const content = {
   id: [
     { id: 'home', label: 'Beranda', text: 'Hai! Ini portofolio-nya Faeyza Ardellein Yaradhitya, atau dipanggil Pija. Di sini kamu bisa lihat skill, project, dan cara hubungin dia. Yuk mulai!' },
-    { id: 'about', label: 'Tentang', text: 'Pija itu mahasiswa Informatika yang suka banget ngulik teknologi, dari web development sampe data analysis. Dia juga suka menyelesaikan masalah lewat coding.' },
+    { id: 'about', label: 'Tentang', text: 'Pija itu mahasiswa Informatika di Universitas Sultan Ageng Tirtayasa yang suka banget ngulik teknologi, dari web development sampe data analysis. Dia juga suka menyelesaikan masalah lewat coding.' },
     { id: 'skills', label: 'Skill', text: 'Ini skill yang udah dikuasain Pija. Ada HTML, CSS, JavaScript, Python, Data Analysis, dan Git. Plus soft skill kayak problem solving dan team collaboration.' },
     { id: 'projects', label: 'Project', text: 'Beberapa project Pija: game 3D Multiplayer Snake Ladder, Data Analysis tentang perbandingan perceraian di Indonesia, dan Hifzhly, aplikasi AI buat menghafal Al-Quran.' },
     { id: 'ambassador', label: 'Ambassador', text: 'Pija juga Google Student Ambassador. Dia aktif ngadain event teknologi dan sharing ilmu sama mahasiswa lain di kampusnya.' },
@@ -12,7 +12,7 @@ const content = {
   ],
   en: [
     { id: 'home', label: 'Home', text: 'Hi! This is Faeyza Ardellein Yaradhitya\'s portfolio, or you can call her Pija. Here you can see her skills, projects, and how to reach her. Let\'s go!' },
-    { id: 'about', label: 'About', text: 'Pija is an Informatics student who loves exploring technology, from web development to data analysis. She also enjoys solving problems through coding.' },
+    { id: 'about', label: 'About', text: 'Pija is an Informatics student at Sultan Ageng Tirtayasa University who loves exploring technology, from web development to data analysis. She also enjoys solving problems through coding.' },
     { id: 'skills', label: 'Skills', text: 'These are Pija\'s skills. She knows HTML, CSS, JavaScript, Python, Data Analysis, and Git. Plus soft skills like problem solving and team collaboration.' },
     { id: 'projects', label: 'Projects', text: 'Some of Pija\'s projects: a 3D Multiplayer Snake Ladder game, Data Analysis on divorce rates in Indonesia, and Hifzhly, an AI app for Quran memorization.' },
     { id: 'ambassador', label: 'Ambassador', text: 'Pija is also a Google Student Ambassador. She organizes tech events and shares knowledge with fellow students on campus.' },
@@ -23,14 +23,48 @@ const content = {
 function pickVoice(lang) {
   const voices = window.speechSynthesis?.getVoices() || []
   const tag = lang === 'id' ? 'id' : 'en'
-  const preferred = lang === 'id'
-    ? ['Google Bahasa Indonesia', 'ID-id', 'id-ID', 'Indonesian']
-    : ['Google US English', 'Google UK English Female', 'en-US', 'en-GB', 'English']
-  for (const p of preferred) {
-    const v = voices.find((v) => v.name.includes(p) || v.lang.startsWith(tag))
+
+  // Prefer female voices
+  const femaleKeywords = ['female', 'woman', 'zira', 'samantha', 'victoria', 'karen', 'moira', 'tessa', 'fiona', 'veena', 'google']
+
+  if (lang === 'id') {
+    // Indonesian female voices
+    const idVoices = voices.filter((v) => v.lang.startsWith('id'))
+    const idFemale = idVoices.find((v) =>
+      femaleKeywords.some((k) => v.name.toLowerCase().includes(k))
+    )
+    if (idFemale) return idFemale
+    if (idVoices.length > 0) return idVoices[0]
+    // Fallback to any Indonesian
+    return voices.find((v) => v.name.includes('Indonesian') || v.lang.startsWith('id')) || null
+  }
+
+  // English - prefer female voices
+  const enVoices = voices.filter((v) => v.lang.startsWith('en'))
+  const preferredFemale = [
+    'Google UK English Female',
+    'Google US English',
+    'Microsoft Zira',
+    'Samantha',
+    'Karen',
+    'Victoria',
+    'Moira',
+    'Tessa',
+    'Fiona',
+  ]
+
+  for (const name of preferredFemale) {
+    const v = enVoices.find((v) => v.name.includes(name))
     if (v) return v
   }
-  return voices.find((v) => v.lang.startsWith(tag)) || null
+
+  // Find any female english voice
+  const enFemale = enVoices.find((v) =>
+    femaleKeywords.some((k) => v.name.toLowerCase().includes(k))
+  )
+  if (enFemale) return enFemale
+
+  return enVoices[0] || null
 }
 
 export default function VoiceGuide() {
@@ -65,8 +99,8 @@ export default function VoiceGuide() {
     const v = pickVoice(lang)
     if (v) u.voice = v
     u.lang = lang === 'id' ? 'id-ID' : 'en-US'
-    u.rate = 1.05
-    u.pitch = 1.1
+    u.rate = 1.0
+    u.pitch = 1.15
     u.onstart = () => setSpeaking(true)
     u.onend = () => { setSpeaking(false); onEnd?.() }
     u.onerror = () => { setSpeaking(false); onEnd?.() }
@@ -134,13 +168,13 @@ export default function VoiceGuide() {
                 {lang === 'id' ? 'EN' : 'ID'}
               </button>
               <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); if (speaking) stop(); else if (active) speak(active.text) }}>
-                {speaking ? '⏸' : '▶'}
+                <i className={`fa-solid ${speaking ? 'fa-pause' : 'fa-play'}`} style={{ fontSize: '9px' }} />
               </button>
               <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); setAutoScroll(!autoScroll) }} title="Auto scroll">
-                {autoScroll ? '↕' : '➡'}
+                <i className={`fa-solid ${autoScroll ? 'fa-arrows-up-down' : 'fa-arrow-right'}`} style={{ fontSize: '9px' }} />
               </button>
               <button className="vg-sm-btn" onClick={(e) => { e.stopPropagation(); setOn(false); stop() }}>
-                ✕
+                <i className="fa-solid fa-xmark" style={{ fontSize: '10px' }} />
               </button>
             </div>
             {active && <p className="vg-widget-text">{active.text}</p>}

@@ -111,8 +111,9 @@
 }
 
 .project-title {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin: 6px 0 10px;
 }

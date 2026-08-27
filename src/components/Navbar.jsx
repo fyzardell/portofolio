@@ -11,6 +11,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+    return () => { document.body.classList.remove('no-scroll') }
+  }, [menuOpen])
+
   const links = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
@@ -21,7 +30,7 @@ export default function Navbar() {
   ]
 
   return (
-    <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`navbar ${scrolled && !menuOpen ? 'scrolled' : ''}`}>
       <nav className="navbar-inner container">
         <a href="#home" className="nav-logo">
           <span className="logo-text">Faeyza</span>

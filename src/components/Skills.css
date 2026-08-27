@@ -50,8 +50,9 @@
 }
 
 .skill-name {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin-bottom: 6px;
 }
@@ -79,8 +80,9 @@
 .competency-section { margin-top: 12px; }
 
 .comp-title {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
   color: #0f172a;
   margin-bottom: 28px;
@@ -129,8 +131,9 @@
 }
 
 .comp-name {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin-bottom: 3px;
 }

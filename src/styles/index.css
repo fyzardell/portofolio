@@ -3,6 +3,9 @@
   --bg-alt: #fce7f3;
   --bg-card: #ffffff;
   --bg-dark: #1e1124;
+  --bg-dark-alt: #2a1a32;
+  --bg-dark-card: rgba(255, 255, 255, 0.06);
+  --white: #ffffff;
   --pink-50: #fdf2f8;
   --pink-100: #fce7f3;
   --pink-200: #fbcfe8;
@@ -19,16 +22,20 @@
   --text: #1e1124;
   --text-secondary: #6b5b7b;
   --text-muted: #9b8bab;
+  --text-light: rgba(255, 255, 255, 0.7);
+  --text-light-muted: rgba(255, 255, 255, 0.4);
   --border: #f3e8ff;
   --border-strong: #e9d5ff;
   --gradient-hero: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 30%, #f5d0fe 60%, #e9d5ff 100%);
   --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #f9a8d4 100%);
   --gradient-accent: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
   --gradient-card: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+  --gradient-dark: linear-gradient(135deg, #1e1124 0%, #2a1a32 50%, #1e1124 100%);
   --shadow-sm: 0 2px 8px rgba(236, 72, 153, 0.08);
   --shadow-md: 0 4px 20px rgba(236, 72, 153, 0.12);
   --shadow-lg: 0 8px 40px rgba(236, 72, 153, 0.15);
   --shadow-card: 0 4px 24px rgba(236, 72, 153, 0.1);
+  --shadow-glow: 0 0 30px rgba(236, 72, 153, 0.3);
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -46,13 +53,23 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   line-height: 1.6;
   cursor: none;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.section-label {
+  font-family: "DM Serif Display", Georgia, serif;
 }
 
 a, button, input, textarea {
@@ -123,11 +140,12 @@ img {
 }
 
 .section-title {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(30px, 5vw, 46px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.15;
   margin-bottom: 18px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .section-subtitle {

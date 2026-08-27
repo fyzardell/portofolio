@@ -66,10 +66,11 @@
 }
 
 .ambassador-title {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(26px, 4.5vw, 38px);
-  font-weight: 800;
+  font-weight: 400;
   margin-bottom: 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.25;
 }
 
@@ -127,8 +128,9 @@
 }
 
 .amb-item h4 {
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin-bottom: 3px;
 }

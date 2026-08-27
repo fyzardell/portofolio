@@ -182,7 +182,8 @@
   background: none;
   border: none;
   padding: 4px;
-  z-index: 1001;
+  z-index: 1003;
+  position: relative;
 }
 
 .hamburger span {
@@ -195,7 +196,7 @@
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: translate(0, 7px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -203,7 +204,7 @@
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: translate(0, -7px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -215,7 +216,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(253, 242, 248, 0.97);
+    background: rgba(253, 242, 248, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
@@ -224,6 +225,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    z-index: 1002;
   }
   .nav-links.open {
     opacity: 1;
