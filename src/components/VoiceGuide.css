@@ -9,13 +9,14 @@
   overflow: hidden;
   overflow-x: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 180px;
+  min-width: 160px;
   max-width: calc(100vw - 40px);
 }
 
 .vg-widget.on {
-  min-width: 220px;
-  max-width: calc(100vw - 40px);
+  min-width: 0;
+  width: calc(100vw - 40px);
+  max-width: 280px;
 }
 
 .vg-widget-bar {
@@ -134,11 +135,12 @@
 }
 
 @media (max-width: 480px) {
-  .vg-widget { bottom: 12px; right: 12px; min-width: 140px; max-width: calc(100vw - 24px); }
-  .vg-widget.on { min-width: 180px; max-width: calc(100vw - 24px); }
-  .vg-widget-bar { padding: 8px 12px; }
-  .vg-widget-label { font-size: 12px; }
-  .vg-widget-body { padding: 0 10px 10px; }
-  .vg-widget-text { font-size: 12px; }
-  .vg-fab { bottom: 12px; right: 12px; width: 44px; height: 44px; }
+  .vg-widget { bottom: 10px; right: 10px; min-width: 0; width: calc(100vw - 20px); max-width: 200px; }
+  .vg-widget.on { min-width: 0; width: calc(100vw - 20px); max-width: 240px; }
+  .vg-widget-bar { padding: 8px 10px; gap: 6px; }
+  .vg-widget-label { font-size: 11px; }
+  .vg-widget-body { padding: 0 8px 8px; }
+  .vg-widget-text { font-size: 11px; line-height: 1.5; }
+  .vg-sm-btn { padding: 4px 8px; font-size: 10px; }
+  .vg-fab { bottom: 10px; right: 10px; width: 40px; height: 40px; border-radius: 12px; }
 }
