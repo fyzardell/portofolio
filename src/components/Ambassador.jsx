@@ -78,7 +78,7 @@ export default function Ambassador() {
             </div>
 
             <a
-              href="https://buildyourfuture.withgoogle.com/programs/student-ambassador"
+              href="https://googlestudentambassador.id/"
               target="_blank"
               rel="noopener noreferrer"
               className="ambassador-link"
