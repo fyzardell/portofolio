@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Contact.css'
 
-const RECIPIENT = 'faeyzaardellein@gmail.com'
+const RECIPIENT = 'fardellein@gmail.com'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -47,13 +47,13 @@ export default function Contact() {
             </p>
 
             <div className="contact-details">
-              <a href="mailto:faeyzaardellein@gmail.com" className="contact-item">
+              <a href="mailto:fardellein@gmail.com" className="contact-item">
                 <div className="contact-icon">
                   <i className="fa-solid fa-envelope" />
                 </div>
                 <div className="contact-item-text">
                   <span className="contact-item-label">Email</span>
-                  <span className="contact-item-value">faeyzaardellein@gmail.com</span>
+                  <span className="contact-item-value">fardellein@gmail.com</span>
                 </div>
               </a>
 

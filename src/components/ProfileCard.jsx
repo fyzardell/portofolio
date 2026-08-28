@@ -74,7 +74,7 @@ export default function ProfileCard() {
           <a href="https://www.instagram.com/fyzardell/" target="_blank" rel="noopener noreferrer" className="profile-social">
             <i className="fa-brands fa-instagram" />
           </a>
-          <a href="mailto:faeyzaardellein@gmail.com" className="profile-social">
+          <a href="mailto:fardellein@gmail.com" className="profile-social">
             <i className="fa-solid fa-envelope" />
           </a>
         </div>

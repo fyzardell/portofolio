@@ -79,7 +79,7 @@ export default function Hero() {
             <a href="https://www.linkedin.com/in/faeyza-ardellein-yaradhitya-053a0b431/" target="_blank" rel="noopener noreferrer" className="hero-social-item">
               <i className="fa-brands fa-linkedin-in" />
             </a>
-            <a href="mailto:faeyzaardellein@gmail.com" className="hero-social-item">
+            <a href="mailto:fardellein@gmail.com" className="hero-social-item">
               <i className="fa-solid fa-envelope" />
             </a>
           </div>
